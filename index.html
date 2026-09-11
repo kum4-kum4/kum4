@@ -1,0 +1,486 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-text: #1f2937;
+    --color-muted: #6b7280;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f3f4f6;
+    --color-border: #e5e7eb;
+    --max-width: 1100px;
+    --radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+ "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.75rem;
+}
+
+.nav-links a {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Hamburger button (hidden on desktop) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: var(--color-text);
+    border-radius: 3px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #fff;
+    text-align: center;
+    padding: 6rem 1.25rem;
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1rem;
+    border: 0;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary {
+    background: #fff;
+    color: var(--color-primary);
+}
+
+.hero .btn-primary {
+    background: #fff;
+    color: var(--color-primary);
+}
+
+.section .btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ---------- Sections ---------- */
+.section {
+    padding: 4rem 0;
+}
+
+.section-alt {
+    background: var(--color-bg-alt);
+}
+
+.section h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section > .container > p {
+    text-align: center;
+    color: var(--color-muted);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+}
+
+/* ---------- Cards Grid ---------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: #fff;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+}
+
+/* ---------- Contact Form ---------- */
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-form label {
+    font-weight: 600;
+    margin-top: 0.75rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    font: inherit;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    width: 100%;
+    background: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+}
+
+.contact-form button {
+    margin-top: 1rem;
+}
+
+.form-status {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    text-align: center;
+    min-height: 1.2em;
+}
+
+.form-status.success { color: #15803d; }
+.form-status.error   { color: #b91c1c; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+    background: #111827;
+    color: #d1d5db;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+/* ---------- Responsive Breakpoints ---------- */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .hero { padding: 4.5rem 1.25rem; }
+    .section { padding: 3rem 0; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .menu-toggle { display: flex; }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        gap: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--color-border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-links.open { max-height: 300px; }
+
+    .nav-links li {
+        border-top: 1px solid var(--color-border);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem 1.25rem;
+    }
+
+    .hero { padding: 3.5rem 1.25rem; }
+    .section { padding: 2.5rem 0; }
+}
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to my personal website - a simple, fast, and responsive one-page site." />
+    <title>My Website | Welcome</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="#home" class="logo">MySite</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hello, Welcome!</h1>
+            <p>A clean, fast, and fully responsive website built with modern web standards.</p>
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About</h2>
+            <p>
+                This is a simple one-page website designed to look great on desktop, tablet, and mobile devices.
+                It uses a mobile-first approach with flexible grids, scalable typography, and a lightweight
+                hamburger menu for small screens.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section section-alt">
+        <div class="container">
+            <h2>What I Do</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Web Design</h3>
+                    <p>Clean, modern, and accessible layouts that work on every screen size.</p>
+                </article>
+                <article class="card">
+                    <h3>Development</h3>
+                    <p>Fast, semantic HTML and CSS with minimal JavaScript for performance.</p>
+                </article>
+                <article class="card">
+                    <h3>Deployment</h3>
+                    <p>Hosted on Cloudflare's global edge network for lightning-fast delivery.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Have a question or want to work together? Send a message below.</p>
+            <form class="contact-form" id="contactForm" novalidate>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> MySite. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+							<script>
+                            	// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const navLinks   = document.getElementById('navLinks');
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close menu when a link is tapped (mobile UX)
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
+
+// Contact form (front-end only demo)
+const form      = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+if (form && formStatus) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name    = form.name.value.trim();
+        const email   = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if (!name || !email || !message) {
+            formStatus.textContent = 'Please fill in all fields.';
+            formStatus.className = 'form-status error';
+            return;
+        }
+
+        // Basic email pattern check
+        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!emailValid) {
+            formStatus.textContent = 'Please enter a valid email address.';
+            formStatus.className = 'form-status error';
+            return;
+        }
+
+        // Front-end demo: no backend. In production, POST to a server        // (Cloudflare Worker, Pages Function, or third-party form service).
+        formStatus.textContent = 'Thanks! Your message has been received (demo).';
+        formStatus.className = 'form-status success';
+        form.reset();
+    });
+}
+
+// Footer year
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+							</script>
+                        </body>
+                        </html>
+                    
