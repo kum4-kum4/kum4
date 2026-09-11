@@ -9,477 +9,430 @@
 									background-color: white; /* Ensure the iframe has a white background */
 								}
 
-								/* ---------- Reset & Base ---------- */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --color-primary: #2563eb;
-    --color-primary-dark: #1d4ed8;
-    --color-text: #1f2937;
-    --color-muted: #6b7280;
-    --color-bg: #ffffff;
-    --color-bg-alt: #f3f4f6;
-    --color-border: #e5e7eb;
-    --max-width: 1100px;
-    --radius: 8px;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
- "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--color-text);
-    background: var(--color-bg);
-    -webkit-font-smoothing: antialiased;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-a {
-    color: var(--color-primary);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--color-primary-dark);
-}
-
-.container {
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 1.25rem;
-}
-
-/* ---------- Header / Nav ---------- */
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 1rem 1.25rem;
-}
-
-.logo {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--color-primary);
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.75rem;
-}
-
-.nav-links a {
-    color: var(--color-text);
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    color: var(--color-primary);
-}
-
-/* Hamburger button (hidden on desktop) */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: 0;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 3px;
-    background: var(--color-text);
-    border-radius: 3px;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-/* ---------- Hero ---------- */
-.hero {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-    color: #fff;
-    text-align: center;
-    padding: 6rem 1.25rem;
-}
-
-.hero-content {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.hero h1 {
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    margin-bottom: 2rem;
-    opacity: 0.95;
-}
-
-/* ---------- Buttons ---------- */
-.btn {
-    display: inline-block;
-    padding: 0.85rem 1.75rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-    font-size: 1rem;
-    border: 0;
-    cursor: pointer;
-    transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.btn-primary {
-    background: #fff;
-    color: var(--color-primary);
-}
-
-.hero .btn-primary {
-    background: #fff;
-    color: var(--color-primary);
-}
-
-.section .btn-primary {
-    background: var(--color-primary);
-    color: #fff;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-}
-
-/* ---------- Sections ---------- */
-.section {
-    padding: 4rem 0;
-}
-
-.section-alt {
-    background: var(--color-bg-alt);
-}
-
-.section h2 {
-    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.section > .container > p {
-    text-align: center;
-    color: var(--color-muted);
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
-}
-
-/* ---------- Cards Grid ---------- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.card {
-    background: #fff;
-    padding: 2rem 1.5rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-    transition: transform 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-}
-
-.card h3 {
-    color: var(--color-primary);
-    margin-bottom: 0.75rem;
-}
-
-/* ---------- Contact Form ---------- */
-.contact-form {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.contact-form label {
-    font-weight: 600;
-    margin-top: 0.75rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    font: inherit;
-    padding: 0.75rem 0.9rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    width: 100%;
-    background: #fff;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 1px;
-}
-
-.contact-form button {
-    margin-top: 1rem;
-}
-
-.form-status {
-    margin-top: 0.75rem;
-    font-size: 0.95rem;
-    text-align: center;
-    min-height: 1.2em;
-}
-
-.form-status.success { color: #15803d; }
-.form-status.error   { color: #b91c1c; }
-
-/* ---------- Footer ---------- */
-.site-footer {
-    background: #111827;
-    color: #d1d5db;
-    text-align: center;
-    padding: 1.5rem 1.25rem;
-    font-size: 0.9rem;
-}
-
-/* ---------- Responsive Breakpoints ---------- */
-
-/* Tablet */
-@media (max-width: 768px) {
-    .hero { padding: 4.5rem 1.25rem; }
-    .section { padding: 3rem 0; }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .menu-toggle { display: flex; }
-
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
-        flex-direction: column;
-        gap: 0;
-        background: #fff;
-        border-bottom: 1px solid var(--color-border);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-    }
-
-    .nav-links.open { max-height: 300px; }
-
-    .nav-links li {
-        border-top: 1px solid var(--color-border);
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 1rem 1.25rem;
-    }
-
-    .hero { padding: 3.5rem 1.25rem; }
-    .section { padding: 2.5rem 0; }
-}
+								
 							</style>
                         </head>
                         <body>
                             <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Welcome to my personal website - a simple, fast, and responsive one-page site." />
-    <title>My Website | Welcome</title>
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kum4 — Coming Soon (Probably)</title>
+  <meta name="description" content="kum4 is being built. By humans. With coffee." />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Reset & base ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf7f2;           /* soft off-white */
+      --bg-soft: #f3ede4;      /* slightly warmer */
+      --ink: #1a1a1a;          /* near-black for text */
+      --muted: #6b6358;        /* warm gray */
+      --line: #e6dfd3;         /* hairline borders */
+      --accent: #b46a3a;       /* warm terracotta */
+      --accent-soft: #e8d5c4;
+      --max-width: 1100px;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Fraunces', Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- Subtle warm gradients ---------- */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(180, 106, 58, 0.04), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(180, 106, 58, 0.03), transparent 40%);
+    }
+
+    /* ---------- Header / Logo ---------- */
+    header {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      font-family: 'Fraunces', serif;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--bg);
+      display: grid;
+      place-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: -1px;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover .logo-mark { transform: rotate(-12deg); }
+
+    .status-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--muted);
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+    .status-pill .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1;    box-shadow: 0 0 0 0 rgba(180, 106, 58, 0.3); }
+      50%      { opacity: 0.55; box-shadow: 0 0 0 3px rgba(180, 106, 58, 0); }
+    }
+
+    /* ---------- Hero ---------- */
+    main {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .hero {
+      width: 100%;
+      max-width: 680px;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.25rem;
+      color: var(--ink);
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .subtitle {
+      font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+    .subtitle .crew {
+      color: var(--ink);
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    /* ---------- Progress ---------- */
+    .progress-wrap {
+      margin: 0 auto 2.5rem;
+      max-width: 380px;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.5px;
+    }
+    .progress-label span:last-child { color: var(--accent); }
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 88%;
+      background: var(--ink);
+      border-radius: 999px;
+      animation: fill 2.2s ease-out forwards;
+    }
+    @keyframes fill {
+      from { width: 0%; }
+      to   { width: 88%; }
+    }
+
+    /* ---------- Funny checklist ---------- */
+    .checklist {
+      text-align: left;
+      max-width: 380px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .checklist li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      opacity: 0;
+      animation: slideIn 0.5s forwards;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px dashed var(--line);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li:nth-child(1) { animation-delay: 0.4s; }
+    .checklist li:nth-child(2) { animation-delay: 0.8s; }
+    .checklist li:nth-child(3) { animation-delay: 1.2s; }
+    .checklist li:nth-child(4) { animation-delay: 1.6s; }
+    .checklist li:nth-child(5) { animation-delay: 2.0s; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .checklist .icon { width: 18px; text-align: center; font-size: 0.9rem; }
+    .checklist .done    { color: var(--accent); }
+    .checklist .pending { color: var(--muted); }
+    .checklist .secret  { color: var(--ink); }
+
+    /* ---------- Notify form ---------- */
+    .notify {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 380px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .notify input {
+      flex: 1 1 200px;
+      min-width: 0;
+      padding: 0.85rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .notify input::placeholder { color: var(--muted); opacity: 0.7; }
+    .notify input:focus {
+      outline: none;
+      border-color: var(--ink);
+    }
+    .notify button {
+      padding: 0.85rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.15s, background 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .notify button:hover {
+      transform: translateY(-1px);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .notify button:active { transform: translateY(0); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.3px;
+    }
+
+    /* ---------- Toast ---------- */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(150%);
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.85rem 1.3rem;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 24px rgba(26, 26, 26, 0.2);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 10;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ---------- Responsive tweaks ---------- */
+    @media (min-width: 640px) {
+      header { padding: 1.75rem 2rem; }
+      main   { padding: 3rem 2rem; }
+    }
+
+    @media (max-width: 380px) {
+      .status-pill { display: none; }
+      .logo { font-size: 1.3rem; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="navbar" aria-label="Main navigation">
-            <a href="#home" class="logo">MySite</a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Hello, Welcome!</h1>
-            <p>A clean, fast, and fully responsive website built with modern web standards.</p>
-            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+  <header>
+    <div class="logo">
+      <div class="logo-mark">k4</div>
+      <span>kum4</span>
+    </div>
+    <span class="status-pill"><span class="dot"></span>WIP</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>something <em>quietly</em> remarkable is on the way.</h1>
+
+      <p class="subtitle">
+        Our website is being built by <span class="crew">Hippo, Mushroom, and C9</span> —
+        a team of highly caffeinated creatures. They've brewed eleven coffees today,
+        finished none, and somehow still haven't decided on dinner.
+      </p>
+
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span>progress.exe</span>
+          <span>88%</span>
         </div>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+
+      <ul class="checklist" aria-label="Construction checklist">
+        <li><span class="icon done">✓</span> Drank the mandatory coffee</li>
+        <li><span class="icon done">✓</span> Made an emergency snack run</li>
+        <li><span class="icon pending">○</span> Watched "just one more" YouTube video</li>
+        <li><span class="icon pending">○</span> Spent 20 min choosing what to order for lunch</li>
+        <li><span class="icon secret">⚠</span> Planning the dream Tokyo trip "after launch"</li>
+      </ul>
+
+      <form class="notify" id="notifyForm" novalidate>
+        <input
+          type="email"
+          id="email"
+          placeholder="you@yourinbox.com"
+          aria-label="Email address"
+          required
+        />
+        <button type="submit">notify me</button>
+      </form>
     </section>
+  </main>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About</h2>
-            <p>
-                This is a simple one-page website designed to look great on desktop, tablet, and mobile devices.
-                It uses a mobile-first approach with flexible grids, scalable typography, and a lightweight
-                hamburger menu for small screens.
-            </p>
-        </div>
-    </section>
+  <footer>
+    <p>© 2026 kum4 — Built with care, caffeine, and a concerning number of tabs.</p>
+  </footer>
 
-    <!-- Services Section -->
-    <section id="services" class="section section-alt">
-        <div class="container">
-            <h2>What I Do</h2>
-            <div class="grid">
-                <article class="card">
-                    <h3>Web Design</h3>
-                    <p>Clean, modern, and accessible layouts that work on every screen size.</p>
-                </article>
-                <article class="card">
-                    <h3>Development</h3>
-                    <p>Fast, semantic HTML and CSS with minimal JavaScript for performance.</p>
-                </article>
-                <article class="card">
-                    <h3>Deployment</h3>
-                    <p>Hosted on Cloudflare's global edge network for lightning-fast delivery.</p>
-                </article>
-            </div>
-        </div>
-    </section>
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    📩 you're on the list. (no spam, only vibes.)
+  </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>Have a question or want to work together? Send a message below.</p>
-            <form class="contact-form" id="contactForm" novalidate>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required />
+  <script>
+    const form = document.getElementById('notifyForm');
+    const toast = document.getElementById('toast');
+    const emailInput = document.getElementById('email');
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+      if (!valid) {
+        toast.textContent = "🤔 that email looks sus. try again?";
+        toast.style.background = "#b46a3a";
+      } else {
+        toast.textContent = `📩 got it, ${email.split('@')[0]}. you're on the list.`;
+        toast.style.background = "#1a1a1a";
+        emailInput.value = '';
+      }
+      toast.classList.add('show');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
+    });
+  </script>
 
-                <button type="submit" class="btn btn-primary">Send Message</button>
-                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; <span id="year"></span> MySite. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
 
 							<script>
-                            	// Mobile menu toggle
-const menuToggle = document.getElementById('menuToggle');
-const navLinks   = document.getElementById('navLinks');
-
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
-        menuToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    // Close menu when a link is tapped (mobile UX)
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-        });
-    });
-}
-
-// Contact form (front-end only demo)
-const form      = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
-
-if (form && formStatus) {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name    = form.name.value.trim();
-        const email   = form.email.value.trim();
-        const message = form.message.value.trim();
-
-        if (!name || !email || !message) {
-            formStatus.textContent = 'Please fill in all fields.';
-            formStatus.className = 'form-status error';
-            return;
-        }
-
-        // Basic email pattern check
-        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!emailValid) {
-            formStatus.textContent = 'Please enter a valid email address.';
-            formStatus.className = 'form-status error';
-            return;
-        }
-
-        // Front-end demo: no backend. In production, POST to a server        // (Cloudflare Worker, Pages Function, or third-party form service).
-        formStatus.textContent = 'Thanks! Your message has been received (demo).';
-        formStatus.className = 'form-status success';
-        form.reset();
-    });
-}
-
-// Footer year
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+                            	
 							</script>
                         </body>
                         </html>
