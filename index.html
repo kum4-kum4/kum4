@@ -1,616 +1,440 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-							<style>
-								body {
-									background-color: white; /* Ensure the iframe has a white background */
-								}
-
-								
-							</style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kuma &amp; friends — coming soon (probably)</title>
-  <meta name="description" content="Kuma & friends is being built. By animals. With coffee." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuma & Friends</title>
+    <style>
+        :root {
+            --bg: #F5F0EB;
+            --ink: #1a1a1a;
+            --cream: #f4f0e7;
+            --gold: #c9a85f;
+            --grid: #E8E0D5;
+            --muted: #6b655c;
+        }
 
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    /* ---------- Reset & base ---------- */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-    :root {
-      --bg: #f5f6ee;
-      --bg-soft: #eceee0;
-      --ink: #1a1a1a;
-      --muted: #6b6f5e;
-      --line: #e0e3d2;
-      --accent: #b46a3a;
-      --grass: #d7e6c6;
-      --max-width: 1100px;
-    }
+        /* Animated isometric background */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
 
-    html, body { height: 100%; }
+        .isometric-grid {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%) rotateX(60deg) rotateZ(-45deg);
+            width: 200vmax;
+            height: 200vmax;
+            background-image:
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.5;
+            animation: grid-drift 40s linear infinite;
+        }
 
-    body {
-      font-family: 'Fraunces', Georgia, serif;
-      background: var(--bg);
-      color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+        @keyframes grid-drift {
+            from { background-position: 0 0; }
+            to   { background-position: 60px 60px; }
+        }
 
-    /* ---------- Soft sage wash ---------- */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        radial-gradient(circle at 15% 12%, rgba(143, 170, 120, 0.08), transparent 42%),
-        radial-gradient(circle at 85% 18%, rgba(143, 170, 120, 0.05), transparent 40%);
-    }
+        /* Floating animals */
+        .floating-animals {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    /* ---------- Axonometric meadow ---------- */
-    .scene {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      width: 100%;
-      height: 56vh;
-      min-height: 340px;
-      z-index: 1;
-      pointer-events: none;
-    }
+        .animal {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.15;
+            animation: float 8s ease-in-out infinite;
+        }
 
-    /* ---------- Header / Logo ---------- */
-    header {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 1.5rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+        .animal-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .animal-2 { top: 15%; right: 10%; animation-delay: 2s; }
+        .animal-3 { bottom: 20%; left: 15%; animation-delay: 4s; }
+        .animal-4 { bottom: 15%; right: 5%; animation-delay: 1s; }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-weight: 600;
-      font-size: 1.4rem;
-      letter-spacing: -0.5px;
-      font-family: 'Fraunces', serif;
-    }
-    .logo .amp {
-      font-style: italic;
-      font-weight: 400;
-      color: var(--accent);
-    }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50%      { transform: translateY(-18px) rotate(3deg); }
+        }
 
-    .logo-mark {
-      width: 46px;
-      height: 46px;
-      transition: transform 0.3s ease;
-    }
-    .logo:hover .logo-mark { transform: rotate(-8deg); }
+        /* Content sits above the background */
+        header,
+        main,
+        footer {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 960px;
+        }
 
-    .status-pill {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      padding: 0.45rem 0.85rem;
-      border-radius: 999px;
-      background: var(--bg-soft);
-      color: var(--muted);
-      border: 1px solid var(--line);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      letter-spacing: 0.5px;
-    }
-    .status-pill .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 8s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1;    box-shadow: 0 0 0 0 rgba(180, 106, 58, 0.3); }
-      50%      { opacity: 0.55; box-shadow: 0 0 0 3px rgba(180, 106, 58, 0); }
-    }
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            background: rgba(244, 240, 231, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid var(--ink);
+            border-radius: 18px;
+            box-shadow: 0 4px 0 rgba(26, 26, 26, 0.12);
+        }
 
-    /* ---------- Hero ---------- */
-    main {
-      position: relative;
-      z-index: 2;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
 
-    .hero {
-      width: 100%;
-      max-width: 680px;
-      text-align: center;
-    }
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            display: block;
+            flex: 0 0 auto;
+            overflow: visible;
+            transition: transform 0.3s ease;
+        }
 
-    h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      font-weight: 600;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-bottom: 1.25rem;
-      color: var(--ink);
-    }
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-      font-weight: 400;
-    }
+        .logo:hover .logo-mark {
+            transform: rotate(-5deg);
+        }
 
-    .subtitle {
-      font-size: clamp(1.05rem, 2.2vw, 1.2rem);
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 2.5rem;
-      font-weight: 400;
-    }
-    .subtitle .crew {
-      color: var(--ink);
-      font-style: italic;
-      white-space: nowrap;
-    }
+        .amp {
+            font-family: Georgia, serif;
+            font-style: italic;
+            color: var(--gold);
+            padding: 0 0.1em;
+        }
 
-    /* ---------- Progress ---------- */
-    .progress-wrap {
-      margin: 0 auto 2.5rem;
-      max-width: 380px;
-    }
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-      letter-spacing: 0.5px;
-    }
-    .progress-label span:last-child { color: var(--accent); }
-    .progress-bar {
-      width: 100%;
-      height: 6px;
-      background: var(--line);
-      border-radius: 999px;
-      overflow: hidden;
-      position: relative;
-    }
-    .progress-fill {
-      height: 100%;
-      width: 88%;
-      background: var(--ink);
-      border-radius: 999px;
-      animation: fill 2.2s ease-out forwards;
-    }
-    @keyframes fill {
-      from { width: 0%; }
-      to   { width: 88%; }
-    }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border: 1.5px solid var(--ink);
+            border-radius: 999px;
+            background: var(--cream);
+        }
 
-    /* ---------- Checklist ---------- */
-    .checklist {
-      text-align: left;
-      max-width: 380px;
-      margin: 0 auto 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-    .checklist li {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      opacity: 0;
-      animation: slideIn 0.5s forwards;
-      padding-bottom: 0.7rem;
-      border-bottom: 1px dashed var(--line);
-    }
-    .checklist li:last-child { border-bottom: none; }
-    .checklist li:nth-child(1) { animation-delay: 0.4s; }
-    .checklist li:nth-child(2) { animation-delay: 0.8s; }
-    .checklist li:nth-child(3) { animation-delay: 1.2s; }
-    .checklist li:nth-child(4) { animation-delay: 1.6s; }
-    .checklist li:nth-child(5) { animation-delay: 2.0s; }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulse 2s ease-in-out infinite;
+        }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-8px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: 0.4; transform: scale(0.8); }
+        }
 
-    .checklist .icon { width: 18px; text-align: center; font-size: 0.9rem; }
-    .checklist .done    { color: var(--accent); }
-    .checklist .pending { color: var(--muted); }
-    .checklist .secret  { color: var(--ink); }
+        /* Hero */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* ---------- Notify form ---------- */
-    .notify {
-      display: flex;
-      gap: 0.5rem;
-      max-width: 380px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .notify input {
-      flex: 1 1 200px;
-      min-width: 0;
-      padding: 0.85rem 1.1rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
-      transition: border-color 0.2s;
-    }
-    .notify input::placeholder { color: var(--muted); opacity: 0.7; }
-    .notify input:focus {
-      outline: none;
-      border-color: var(--ink);
-    }
-    .notify button {
-      padding: 0.85rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid var(--ink);
-      background: var(--ink);
-      color: var(--bg);
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 500;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: transform 0.15s, background 0.2s;
-      letter-spacing: 0.3px;
-    }
-    .notify button:hover {
-      transform: translateY(-1px);
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-    .notify button:active { transform: translateY(0); }
+        .hero {
+            text-align: center;
+            padding: 90px 20px 70px;
+        }
 
-    /* ---------- Footer ---------- */
-    footer {
-      position: relative;
-      z-index: 2;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
-      letter-spacing: 0.3px;
-    }
+        .hero h1 {
+            font-size: clamp(2.4rem, 7vw, 4.2rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
 
-    /* ---------- Toast ---------- */
-    .toast {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(150%);
-      background: var(--ink);
-      color: var(--bg);
-      padding: 0.85rem 1.3rem;
-      border-radius: 999px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      box-shadow: 0 8px 24px rgba(26, 26, 26, 0.2);
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 10;
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); }
+        .hero h1 em {
+            font-family: Georgia, serif;
+            color: var(--gold);
+        }
 
-    /* ---------- Responsive ---------- */
-    @media (min-width: 640px) {
-      header { padding: 1.75rem 2rem; }
-      main   { padding: 3rem 2rem; }
-    }
+        .hero p {
+            max-width: 520px;
+            margin: 20px auto 32px;
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
 
-    @media (max-width: 640px) {
-      .scene { height: 42vh; min-height: 260px; }
-    }
+        .cta-row {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-    @media (max-width: 380px) {
-      .status-pill { display: none; }
-      .logo { font-size: 1.15rem; }
-      .logo-mark { width: 38px; height: 38px; }
-    }
-  </style>
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 14px;
+            border: 1.5px solid var(--ink);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            color: var(--ink);
+            background: var(--cream);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn.primary {
+            background: var(--gold);
+            color: #fff;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 rgba(26, 26, 26, 0.15);
+        }
+
+        /* Friends cards */
+        .friends {
+            padding: 30px 20px 60px;
+        }
+
+        .friends h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 30px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--cream);
+            border: 1.5px solid var(--ink);
+            border-radius: 18px;
+            padding: 26px 20px;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 0 rgba(26, 26, 26, 0.12);
+        }
+
+        .card .face {
+            font-size: 44px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px 40px;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        footer .paw {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 8px;
+            opacity: 0.6;
+        }
+
+        /* Mobile */
+        @media (max-width: 420px) {
+            .status-pill {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.15rem;
+            }
+
+            .logo-mark {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Accessibility: reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            .isometric-grid,
+            .animal,
+            .dot,
+            .logo-mark,
+            .btn,
+            .card {
+                animation: none;
+                transition: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ======= Axonometric meadow with the crew ======= -->
-  <svg class="scene" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="horizonFade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#f5f6ee" stop-opacity="1"/>
-        <stop offset="1" stop-color="#f5f6ee" stop-opacity="0"/>
-      </linearGradient>
-      <g id="tree">
-        <ellipse cx="0" cy="2" rx="12" ry="3" fill="rgba(60,80,45,0.10)"/>
-        <rect x="-1.6" y="-16" width="3.2" height="17" rx="1.4" fill="#a58a6f"/>
-        <ellipse cx="0" cy="-24" rx="11" ry="13" fill="#a9c796"/>
-        <ellipse cx="-3" cy="-28" rx="7" ry="8" fill="#bcd6a9"/>
-      </g>
-      <g id="bush">
-        <ellipse cx="0" cy="0" rx="10" ry="5" fill="#b9d0a2"/>
-        <ellipse cx="-4" cy="-3" rx="6" ry="4" fill="#c6dbb2"/>
-      </g>
-      <polygon id="tile" points="0,-17.5 35,0 0,17.5 -35,0" fill="#e6efd9"/>
-    </defs>
-
-    <!-- meadow -->
-    <polygon points="600,220 1500,520 600,820 -300,520" fill="#d7e6c6"/>
-    <rect x="0" y="130" width="1200" height="200" fill="url(#horizonFade)"/>
-
-    <!-- plateaus -->
-    <polygon points="850,330 950,380 850,430 750,380" fill="#cfe3bb"/>
-    <polygon points="750,380 850,430 850,446 750,396" fill="#b9d0a2"/>
-    <polygon points="950,380 850,430 850,446 950,396" fill="#b2c99b"/>
-    <polygon points="350,425 425,462 350,499 275,462" fill="#d2e4bf"/>
-    <polygon points="275,462 350,499 350,512 275,475" fill="#bfd6a8"/>
-
-    <!-- texture & greenery -->
-    <use href="#tile" x="400" y="470"/>
-    <use href="#tile" x="760" y="555"/>
-    <use href="#tile" x="950" y="505"/>
-    <use href="#tile" x="240" y="520"/>
-    <use href="#tile" x="560" y="505"/>
-    <use href="#tree" transform="translate(1020,455)"/>
-    <use href="#tree" transform="translate(180,485) scale(0.85)"/>
-    <use href="#tree" transform="translate(450,470) scale(0.7)"/>
-    <use href="#tree" transform="translate(830,380) scale(0.8)"/>
-    <use href="#tree" transform="translate(875,398) scale(0.65)"/>
-    <use href="#bush" transform="translate(620,560)"/>
-    <use href="#bush" transform="translate(105,545) scale(0.9)"/>
-    <use href="#bush" transform="translate(1110,570)"/>
-
-    <!-- ======= The crew (moved by JS — see script below) ======= -->
-    <!-- All art drawn facing RIGHT; data-dir="-1" flips them to walk left -->
-
-    <!-- Dino -->
-    <g class="walker" data-speed="22" data-dir="1"  data-y="478" data-phase="0.30" data-stride="1.0">
-      <ellipse cx="0" cy="0" rx="26" ry="3.5" fill="rgba(60,80,45,0.10)"/>
-      <path d="M -20,-16 Q -34,-14 -39,-5 Q -30,-8 -21,-10 Z" fill="#8fae72"/>
-      <rect x="-16" y="-10" width="7" height="10" rx="2.5" fill="#7ea35f"/>
-      <rect x="5" y="-10" width="7" height="10" rx="2.5" fill="#7ea35f"/>
-      <ellipse cx="-2" cy="-16" rx="21" ry="12" fill="#97b579"/>
-      <ellipse cx="-2" cy="-12" rx="12" ry="6" fill="#b7cba0"/>
-      <path d="M -13,-26 l4,-6 4,6 Z" fill="#7ea35f"/>
-      <path d="M -3,-27 l4,-6 4,6 Z" fill="#7ea35f"/>
-      <path d="M 7,-25 l4,-6 4,6 Z" fill="#7ea35f"/>
-      <ellipse cx="18" cy="-24" rx="8" ry="7" fill="#97b579"/>
-      <circle cx="24" cy="-30" r="7.5" fill="#97b579"/>
-      <ellipse cx="30" cy="-28" rx="5" ry="3.8" fill="#97b579"/>
-      <circle cx="32.5" cy="-28.5" r="1" fill="#4a5a3a"/>
-      <circle cx="23" cy="-32" r="1.5" fill="#33402a"/>
-    </g>
-
-    <!-- Kuma the bear -->
-    <g class="walker" data-speed="20" data-dir="-1" data-y="505" data-phase="0.72" data-stride="1.2">
-      <ellipse cx="0" cy="0" rx="24" ry="3.5" fill="rgba(60,80,45,0.10)"/>
-      <rect x="-18" y="-12" width="8" height="12" rx="3" fill="#9a7350"/>
-      <rect x="8" y="-12" width="8" height="12" rx="3" fill="#9a7350"/>
-      <ellipse cx="-2" cy="-24" rx="22" ry="15" fill="#b08968"/>
-      <circle cx="9" cy="-49" r="4.6" fill="#b08968"/>
-      <circle cx="27" cy="-49" r="4.6" fill="#b08968"/>
-      <circle cx="9" cy="-49" r="2" fill="#8f6a48"/>
-      <circle cx="27" cy="-49" r="2" fill="#8f6a48"/>
-      <circle cx="18" cy="-40" r="12.5" fill="#b08968"/>
-      <ellipse cx="22" cy="-37.5" rx="6.4" ry="4.8" fill="#d9c1a8"/>
-      <circle cx="24.5" cy="-39.5" r="1.9" fill="#4a3826"/>
-      <circle cx="14.5" cy="-43.5" r="1.6" fill="#4a3826"/>
-    </g>
-
-    <!-- Hippo -->
-    <g class="walker" data-speed="15" data-dir="-1" data-y="535" data-phase="0.50" data-stride="1.35">
-      <ellipse cx="0" cy="0" rx="26" ry="3.5" fill="rgba(60,80,45,0.10)"/>
-      <path d="M -24,-14 q -5,-2 -6,2 q 3,2 6,1 Z" fill="#8e9ab8"/>
-      <rect x="-16" y="-9" width="7" height="9" rx="2.5" fill="#8e9ab8"/>
-      <rect x="6" y="-9" width="7" height="9" rx="2.5" fill="#8e9ab8"/>
-      <ellipse cx="-2" cy="-14" rx="23" ry="13" fill="#aab6cf"/>
-      <ellipse cx="-2" cy="-10" rx="13" ry="5.5" fill="#c3cbdf"/>
-      <circle cx="16" cy="-28" r="2.6" fill="#aab6cf"/>
-      <circle cx="26" cy="-28" r="2.6" fill="#aab6cf"/>
-      <circle cx="22" cy="-19" r="10" fill="#aab6cf"/>
-      <ellipse cx="30" cy="-15" rx="8.5" ry="6.5" fill="#b9c3d9"/>
-      <circle cx="29" cy="-16.5" r="1.1" fill="#6d7690"/>
-      <circle cx="33" cy="-14.5" r="1.1" fill="#6d7690"/>
-      <circle cx="18" cy="-22" r="1.5" fill="#4d556e"/>
-    </g>
-
-    <!-- Cat -->
-    <g class="walker" data-speed="26" data-dir="1"  data-y="562" data-phase="0.12" data-stride="0.85">
-      <ellipse cx="0" cy="0" rx="16" ry="2.8" fill="rgba(60,80,45,0.10)"/>
-      <path d="M -12,-8 Q -22,-13 -18,-24" stroke="#d9a17c" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <rect x="-8" y="-6" width="5" height="6" rx="2" fill="#d9a17c"/>
-      <rect x="3" y="-6" width="5" height="6" rx="2" fill="#d9a17c"/>
-      <ellipse cx="0" cy="-8" rx="13" ry="7" fill="#e2b394"/>
-      <path d="M 6,-18 l-1.5,-5.5 4.5,2.5 Z" fill="#e2b394"/>
-      <path d="M 15,-18 l1.5,-5.5 -4.5,2.5 Z" fill="#e2b394"/>
-      <circle cx="11" cy="-14" r="6.5" fill="#e2b394"/>
-      <path d="M -2,-11 q 3,2 6,0" stroke="#d0996f" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <circle cx="9" cy="-15" r="1.1" fill="#4a3826"/>
-      <circle cx="13.5" cy="-15" r="1.1" fill="#4a3826"/>
-    </g>
-  </svg>
-
-  <!-- ======= Content ======= -->
-  <header>
-    <div class="logo">
-      <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="24" r="22.5" fill="#fffaf2" stroke="#1a1a1a" stroke-width="1.3"/>
-        <circle cx="13.5" cy="14" r="4.6" fill="#fffaf2" stroke="#1a1a1a" stroke-width="1.3"/>
-        <circle cx="34.5" cy="14" r="4.6" fill="#fffaf2" stroke="#1a1a1a" stroke-width="1.3"/>
-        <circle cx="13.5" cy="14" r="1.7" fill="#1a1a1a" opacity="0.85"/>
-        <circle cx="34.5" cy="14" r="1.7" fill="#1a1a1a" opacity="0.85"/>
-        <circle cx="24" cy="27" r="13" fill="#fffaf2" stroke="#1a1a1a" stroke-width="1.3"/>
-        <ellipse cx="24" cy="31.5" rx="5.4" ry="4" fill="#f3e8d8"/>
-        <path d="M22.2 29.9 h3.6 l-1.8 2.3 Z" fill="#1a1a1a"/>
-        <path d="M24 32.4 q0 1.9 -2.1 1.9" stroke="#1a1a1a" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-        <circle cx="18.4" cy="24.4" r="1.3" fill="#1a1a1a"/>
-        <circle cx="29.6" cy="24.4" r="1.3" fill="#1a1a1a"/>
-      </svg>
-      <span>Kuma <span class="amp">&amp;</span> friends</span>
+    <div class="background-container" aria-hidden="true">
+        <div class="isometric-grid"></div>
     </div>
-    <span class="status-pill"><span class="dot"></span>WIP</span>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h1>something <em>quietly</em> remarkable is on the way.</h1>
+    <div class="floating-animals" aria-hidden="true">
+        <span class="animal animal-1">🐻</span>
+        <span class="animal animal-2">🦊</span>
+        <span class="animal animal-3">🐰</span>
+        <span class="animal animal-4">🐧</span>
+    </div>
 
-      <p class="subtitle">
-        Our website is being built by <span class="crew">Hippo, Mushroom, and C9</span> —
-        a team of highly caffeinated creatures. They've brewed eleven coffees today,
-        finished none, and somehow still haven't decided on dinner.
-      </p>
+    <header>
+        <div class="logo">
+            <svg
+                class="logo-mark"
+                viewBox="0 0 100 100"
+                role="img"
+                aria-label="Kuma & friends logo"
+            >
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="48"
+                    fill="#f4f0e7"
+                    stroke="#1a1a1a"
+                    stroke-width="2.5"
+                />
 
-      <div class="progress-wrap">
-        <div class="progress-label">
-          <span>progress.exe</span>
-          <span>88%</span>
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="none"
+                    stroke="#1a1a1a"
+                    stroke-width="1.2"
+                />
+
+                <circle cx="27" cy="29" r="8" fill="#c9a85f" />
+                <circle cx="73" cy="29" r="8" fill="#c9a85f" />
+
+                <path
+                    d="M 28 74 C 28 52, 31 35, 50 35 C 69 35, 72 52, 72 74 Z"
+                    fill="#c9a85f"
+                />
+
+                <circle cx="50" cy="53" r="4.2" fill="#f4f0e7" />
+
+                <path
+                    d="M 46 64 L 54 64 L 50 69 Z"
+                    fill="#f4f0e7"
+                />
+            </svg>
+
+            <span>Kuma <span class="amp">&amp;</span> friends</span>
         </div>
-        <div class="progress-bar">
-          <div class="progress-fill"></div>
-        </div>
-      </div>
 
-      <ul class="checklist" aria-label="Construction checklist">
-        <li><span class="icon done">✓</span> Drank the mandatory coffee</li>
-        <li><span class="icon done">✓</span> Made an emergency snack run</li>
-        <li><span class="icon pending">○</span> Watched "just one more" YouTube video</li>
-        <li><span class="icon pending">○</span> Spent 20 min choosing what to order for lunch</li>
-        <li><span class="icon secret">⚠</span> Planning the dream Tokyo trip "after launch"</li>
-      </ul>
+        <span class="status-pill">
+            <span class="dot"></span>
+            WIP
+        </span>
+    </header>
 
-      <form class="notify" id="notifyForm" novalidate>
-        <input
-          type="email"
-          id="email"
-          placeholder="you@yourinbox.com"
-          aria-label="Email address"
-          required
-        />
-        <button type="submit">notify me</button>
-      </form>
-    </section>
-  </main>
+    <main>
+        <section class="hero">
+            <h1>A cozy corner for <em>Kuma</em> &amp; the gang</h1>
+            <p>
+                Little stories, doodles, and adventures from a very soft bear
+                and his equally soft companions. Currently under gentle
+                construction.
+            </p>
+            <div class="cta-row">
+                <a class="btn primary" href="#friends">Meet the friends</a>
+                <a class="btn" href="#about">About the den</a>
+            </div>
+        </section>
 
-  <footer>
-    <p>© 2026 Kuma &amp; friends — built with care, caffeine, and a concerning number of tabs.</p>
-  </footer>
+        <section class="friends" id="friends">
+            <h2>The friends</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <span class="face">🐻</span>
+                    <h3>Kuma</h3>
+                    <p>The bear in charge. Mostly naps, occasionally leads.</p>
+                </div>
+                <div class="card">
+                    <span class="face">🦊</span>
+                    <h3>Kitsune</h3>
+                    <p>Clever, quick, and always first to the snack bowl.</p>
+                </div>
+                <div class="card">
+                    <span class="face">🐰</span>
+                    <h3>Usagi</h3>
+                    <p>Small, bouncy, full of big ideas and bigger hops.</p>
+                </div>
+                <div class="card">
+                    <span class="face">🐧</span>
+                    <h3>Pengin</h3>
+                    <p>Waddles in late, but always brings the best stories.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite">
-    📩 you're on the list. (no spam, only vibes.)
-  </div>
-
-  <script>
-    /* ---------- Notify form toast ---------- */
-    const form = document.getElementById('notifyForm');
-    const toast = document.getElementById('toast');
-    const emailInput = document.getElementById('email');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = emailInput.value.trim();
-      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-      if (!valid) {
-        toast.textContent = "🤔 that email looks sus. try again?";
-        toast.style.background = "#b46a3a";
-      } else {
-        toast.textContent = `📩 got it, ${email.split('@')[0]}. you're on the list.`;
-        toast.style.background = "#1a1a1a";
-        emailInput.value = '';
-      }
-      toast.classList.add('show');
-      clearTimeout(window._toastTimer);
-      window._toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
-    });
-
-    /* ---------- The walking crew (JS-driven, works in every browser) ---------- */
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const walkers = Array.from(document.querySelectorAll('.walker'));
-    const RANGE = 1600;   // total patrol distance in SVG units
-    const START = -200;   // off-screen left starting point
-
-    function placeWalker(w, x, bob) {
-      const dir  = parseFloat(w.dataset.dir)  || 1;
-      const y    = parseFloat(w.dataset.y)    || 500;
-      const flip = dir < 0 ? -1 : 1; // face the walking direction
-      w.setAttribute('transform',
-        `translate(${x.toFixed(1)}, ${(y + bob).toFixed(2)}) scale(${flip}, 1)`);
-    }
-
-    if (reduceMotion) {
-      // Static, politely spread across the meadow
-      walkers.forEach(w => {
-        const phase = parseFloat(w.dataset.phase) || 0;
-        placeWalker(w, START + phase * RANGE, 0);
-      });
-    } else {
-      const loop = (now) => {
-        const t = now / 1000;
-        walkers.forEach(w => {
-          const speed  = parseFloat(w.dataset.speed)  || 15;
-          const dir    = parseFloat(w.dataset.dir)    || 1;
-          const phase  = parseFloat(w.dataset.phase)  || 0;
-          const stride = parseFloat(w.dataset.stride) || 1.1;
-
-          // Seamless looping position
-          const raw = phase * RANGE + dir * speed * t;
-          const x = START + ((raw % RANGE) + RANGE) % RANGE;
-
-          // Gentle walk-bob
-          const bob = -Math.abs(Math.sin((t / stride) * Math.PI)) * 2.2;
-
-          placeWalker(w, x, bob);
-        });
-        requestAnimationFrame(loop);
-      };
-      requestAnimationFrame(loop);
-    }
-  </script>
+    <footer id="about">
+        <span class="paw">🐾</span>
+        Kuma <span class="amp">&amp;</span> friends — handmade with warmth.
+        All leaves, no bugs.
+    </footer>
 
 </body>
 </html>
-
-							<script>
-                            	
-							</script>
-                        </body>
-                        </html>
-                    
