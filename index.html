@@ -94,7 +94,29 @@
     
     /* ---------- hero ---------- */
     .hero { text-align: center; padding: 4.5rem 1.5rem 3.5rem; }
-    .hero .pals { font-size: 2.4rem; letter-spacing: .35em; margin-bottom: 1.25rem; }
+    .hero .pals {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      gap: .75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero .pals img {
+      width: 76px;
+      height: 76px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--paper);
+      box-shadow: 0 5px 14px rgba(91, 70, 54, .14);
+      background: var(--card);
+    }
+
+    .hero .pals img:nth-child(2),
+    .hero .pals img:nth-child(4) {
+      transform: translateY(-8px);
+    }
+    
     .hero h1 { font-size: 2.4rem; color: var(--soft); margin-bottom: .75rem; }
     .badge {
       display: inline-block; font-size: .8rem; letter-spacing: .06em;
