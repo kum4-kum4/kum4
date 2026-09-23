@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,30 +22,35 @@
   <title>Kuma &amp; Friends — a cozy corner for Kuma &amp; the gang</title>
   <meta name="description" content="Little stories, doodles, and adventures from a very soft bear and his equally soft companions. New comics every Monday.">
 
-  <meta property="og:title" content="Kuma & Friends">
+  <meta property="og:title" content="Kuma &amp; Friends">
   <meta property="og:description" content="Cozy comics every Monday. Little stories from a very soft bear and his friends.">
   <meta property="og:image" content="og-image.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
-
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐻</text></svg>">
 
   <style>
     :root {
-      --cream:  #fdf6ec;
-      --paper:  #fffdf8;
-      --card:   #fff8ee;
-      --ink:    #5b4636;
-      --soft:   #8b5e3c;
-      --faint:  #c4a682;
-      --line:   #f0e2cc;
+      --cream: #fdf6ec;
+      --paper: #fffdf8;
+      --card: #fff8ee;
+      --ink: #5b4636;
+      --soft: #8b5e3c;
+      --faint: #c4a682;
+      --line: #f0e2cc;
       --accent: #d9825f;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: "Trebuchet MS", Arial, sans-serif;
@@ -43,57 +63,22 @@
     h2,
     h3,
     .logo {
-    font-family: Georgia, "Times New Roman", serif;
+      font-family: Georgia, "Times New Roman", serif;
     }
-
-    .hero h1 {
-      font-size: clamp(2.1rem, 6vw, 3rem);
-      line-height: 1.15;
-      color: var(--soft);
-      margin-bottom: .9rem;
-    }
-
-    section h2 {
-      color: var(--soft);
-      font-size: clamp(1.55rem, 4vw, 2rem);
-      line-height: 1.2;
-      margin-bottom: 1.75rem;
-      text-align: center;
-    }
-
-    .hero p {
-      max-width: 36rem;
-      margin: 0 auto 1.75rem;
-      font-size: 1.08rem;
-      line-height: 1.7;
-    }
-    
-    /* ---------- shared buttons ---------- */
-    .button {
-      display: inline-block;
-      padding: .7rem 1.7rem;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: .9rem;
-      font-weight: bold;
-      letter-spacing: .01em;
-    }
-    
-    .button:hover { filter: brightness(.95); }
-    .button.ghost-btn { background: transparent; color: var(--soft); border: 1px solid var(--line); }
-    .button.ghost-btn:hover { background: var(--card); }
 
     /* ---------- header / nav ---------- */
     header {
-      display: flex; flex-wrap: wrap; align-items: center;
-      justify-content: space-between; gap: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
       padding: 1.25rem 1.5rem;
       background: var(--paper);
       border-bottom: 1px solid var(--line);
-      position: sticky; top: 0; z-index: 10;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .logo {
@@ -131,13 +116,45 @@
     nav a:hover {
       color: var(--accent);
     }
-    
+
+    /* ---------- buttons ---------- */
+    .button {
+      display: inline-block;
+      padding: .7rem 1.7rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: .9rem;
+      font-weight: bold;
+      letter-spacing: .01em;
+    }
+
+    .button:hover {
+      filter: brightness(.95);
+    }
+
+    .button.ghost-btn {
+      background: transparent;
+      color: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .button.ghost-btn:hover {
+      background: var(--card);
+    }
+
     /* ---------- hero ---------- */
-    .hero { text-align: center; padding: 4.5rem 1.5rem 3.5rem; }
+    .hero {
+      text-align: center;
+      padding: 4.5rem 1.5rem 3.5rem;
+    }
+
     .hero .pals {
       display: flex;
       justify-content: center;
-      align-items: end;
+      align-items: center;
       flex-wrap: nowrap;
       gap: .75rem;
       margin-bottom: 1.4rem;
@@ -146,30 +163,54 @@
     .hero .pals img {
       width: 76px;
       height: 76px;
+      flex: 0 0 76px;
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid var(--paper);
       box-shadow: 0 5px 14px rgba(91, 70, 54, .14);
       background: var(--card);
-      transform: none;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 1rem;
-    }
-
-      nav a {
-        margin-left: .65rem;
-        font-size: .82rem;
-      }
-    }
-    
     .hero h1 {
       font-size: clamp(2.1rem, 6vw, 3rem);
       line-height: 1.15;
       color: var(--soft);
       margin-bottom: .9rem;
+    }
+
+    .hero p {
+      max-width: 36rem;
+      margin: 0 auto 1.75rem;
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: .8rem;
+      letter-spacing: .06em;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .25rem .9rem;
+      color: var(--soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .badge > span {
+      color: var(--accent);
+      margin-right: .25rem;
+    }
+
+    .cta a {
+      margin: 0 .4rem;
+    }
+
+    /* ---------- generic sections ---------- */
+    section {
+      padding: 3.5rem 1.5rem;
+      max-width: 56rem;
+      margin: 0 auto;
     }
 
     section h2 {
@@ -180,6 +221,33 @@
       text-align: center;
     }
 
+    /* ---------- friends ---------- */
+    .friend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      gap: 1.25rem;
+    }
+
+    .friend {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .friend .face {
+      display: block;
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto .5rem;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(91, 70, 54, .10);
+      background: var(--card);
+    }
+
     .friend h3,
     .strip h3,
     .shop-card h3 {
@@ -187,360 +255,333 @@
       line-height: 1.3;
     }
 
-    .badge > span {
-      color: var(--accent);
-      margin-right: .25rem;
-    }
-    .hero p { max-width: 34rem; margin: 0 auto 1.75rem; }
-    .cta a { margin: 0 .4rem; }
-
-    /* ---------- generic sections ---------- */
-    section { padding: 3.5rem 1.5rem; max-width: 56rem; margin: 0 auto; }
-    section h2 { color: var(--soft); font-size: 1.6rem; margin-bottom: 1.75rem; text-align: center; }
-
-    /* ---------- friends ---------- */
-    .friend-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-      gap: 1.25rem;
-    }
-    .friend {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: 16px; padding: 1.5rem; text-align: center;
-    }
-    .friend .face {
-    display: block;
-    width: 96px; height: 96px; object-fit: cover;
-    border-radius: 50%;
-    margin: 0 auto .5rem;
-    border: 1px solid var(--line);
-    box-shadow: 0 4px 12px rgba(91, 70, 54, .10);
-    }
-
     /* ---------- comics ---------- */
-    .strip { margin-bottom: 3.5rem; }
-    .strip:last-of-type { margin-bottom: 0; }
-    .strip h3 { color: var(--soft); margin-bottom: .35rem; }
+    .strip {
+      margin-bottom: 3.5rem;
+    }
+
+    .strip:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .strip h3 {
+      color: var(--soft);
+      margin-bottom: .35rem;
+    }
+
     .strip .date {
-      font-size: .8rem; color: var(--faint); margin-left: .5rem; letter-spacing: .05em;
+      font-size: .8rem;
+      color: var(--faint);
+      margin-left: .5rem;
+      letter-spacing: .05em;
     }
+
     .panel-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
     }
-    @media (max-width: 600px) { .panel-grid { grid-template-columns: 1fr; } }
+
     .panel {
-      position: relative; background: #f6ecdb;
-      border-radius: 14px; overflow: hidden; min-height: 200px;
+      position: relative;
+      background: #f6ecdb;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 200px;
     }
-    /* shows while the real panel art isn't in /comics yet */
+
+    /* Placeholder label shown if comic art has not loaded */
     .panel::after {
       content: attr(data-label);
-      position: absolute; inset: 0;
-      display: grid; place-items: center;
-      color: var(--faint); font-size: .85rem; letter-spacing: .04em;
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: var(--faint);
+      font-size: .85rem;
+      letter-spacing: .04em;
     }
+
     .panel img {
-      position: relative; z-index: 1;
-      width: 100%; height: auto; display: block; border-radius: 14px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
     }
-    .strip-note { margin-top: 1rem; font-size: .9rem; color: var(--faint); font-style: italic; }
+
+    .strip-note {
+      margin-top: 1rem;
+      font-size: .9rem;
+      color: var(--faint);
+      font-style: italic;
+    }
 
     /* ---------- about ---------- */
-    .about p { max-width: 40rem; margin: 0 auto; text-align: center; }
+    .about p {
+      max-width: 40rem;
+      margin: 0 auto;
+      text-align: center;
+    }
 
     /* ---------- newsletter ---------- */
     .newsletter {
-      background: var(--paper); border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line); text-align: center;
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-align: center;
     }
-    .newsletter p { max-width: 32rem; margin: 0 auto 1.5rem; }
 
-    /* ---------- den shop (dormant until you uncomment it) ---------- */
-    .den-shop { background: var(--paper); border-top: 1px solid var(--line); }
-    .shop-lede { text-align: center; margin: -1rem 0 2rem; }
+    .newsletter p {
+      max-width: 32rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* ---------- den shop (currently dormant) ---------- */
+    .den-shop {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+    }
+
+    .shop-lede {
+      text-align: center;
+      margin: -1rem 0 2rem;
+    }
+
     .shop-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      gap: 1.25rem;
     }
+
     .shop-card {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: 16px; padding: 1.75rem 1.5rem; text-align: center;
-      display: flex; flex-direction: column;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
     }
-    .shop-icon { font-size: 2rem; margin-bottom: .5rem; }
-    .shop-card h3 { color: var(--soft); margin-bottom: .5rem; }
-    .shop-card p { font-size: .95rem; flex-grow: 1; }
-    .price { color: var(--faint); font-size: .85rem; margin: .75rem 0 1rem; letter-spacing: .04em; }
+
+    .shop-icon {
+      font-size: 2rem;
+      margin-bottom: .5rem;
+    }
+
+    .shop-card h3 {
+      color: var(--soft);
+      margin-bottom: .5rem;
+    }
+
+    .shop-card p {
+      font-size: .95rem;
+      flex-grow: 1;
+    }
+
+    .price {
+      color: var(--faint);
+      font-size: .85rem;
+      margin: .75rem 0 1rem;
+      letter-spacing: .04em;
+    }
 
     /* ---------- footer ---------- */
     footer {
-      text-align: center; padding: 2.5rem 1.5rem; font-size: .9rem; color: var(--soft);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: .9rem;
+      color: var(--soft);
     }
-    footer a { color: var(--accent); text-decoration: none; }
-    footer .muted { color: var(--faint); display: block; margin-top: .4rem; }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer .muted {
+      color: var(--faint);
+      display: block;
+      margin-top: .4rem;
+    }
+
+    /* ---------- mobile ---------- */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+      }
+
+      nav a {
+        margin-left: .65rem;
+        font-size: .82rem;
+      }
+
+      .hero .pals {
+        gap: .4rem;
+      }
+
+      .hero .pals img {
+        width: 62px;
+        height: 62px;
+        flex: 0 1 62px;
+      }
+
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <header>
+    <a class="logo" href="#top">
+      <span class="logo-mark" aria-hidden="true">✦</span>
+      <span>Kuma &amp; friends</span>
+    </a>
 
-<header>
-  <a class="logo" href="#top">
-  <span class="logo-mark" aria-hidden="true">✦</span>
-  <span>Kuma &amp; friends</span>
-  </a>
-  <nav>
-    <a href="#friends">The friends</a>
-    <a href="#comics">The comics</a>
-    <a href="#about">About the den</a>
-    <!-- UNCOMMENT when the den shop opens (~Oct 19):
-    <a href="#den-shop">The den shop</a>
-    -->
-  </nav>
-</header>
+    <nav aria-label="Main navigation">
+      <a href="#friends">The friends</a>
+      <a href="#comics">The comics</a>
+      <a href="#about">About the den</a>
+      <!-- Uncomment when the den shop opens:
+      <a href="#den-shop">The den shop</a>
+      -->
+    </nav>
+  </header>
 
-<main id="top">
+  <main id="top">
+    <section class="hero">
+      <div class="pals" aria-label="Kuma, Ressa, Usagi, and Yuzu">
+        <img src="images/kuma.png" alt="Kuma, a soft brown bear.">
+        <img src="images/ressa.png" alt="Ressa, a fluffy red panda.">
+        <img src="images/usagi.png" alt="Usagi, a small Netherland Dwarf rabbit.">
+        <img src="images/yuzu.png" alt="Yuzu, a calm capybara.">
+      </div>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero">
-    <div class="pals" aria-label="Kuma, Ressa, Usagi, and Yuzu">
-      <img src="images/kuma.png" alt="Kuma, a soft brown bear.">
-      <img src="images/ressa.png" alt="Ressa, a fluffy red panda.">
-      <img src="images/usagi.png" alt="Usagi, a small Netherland Dwarf rabbit.">
-      <img src="images/yuzu.png" alt="Yuzu, a calm capybara.">
-    </div>
-    <span class="badge">
-      <span aria-hidden="true">✦</span>
-      New strips every Monday
+      <span class="badge">
+        <span aria-hidden="true">✦</span>
+        New strips every Monday
+      </span>
+
+      <h1>Kuma &amp; friends</h1>
+
+      <p>
+        Little stories, doodles, and adventures from a very soft bear
+        and his equally soft companions. The den is now open — pull up a leaf.
+      </p>
+
+      <div class="cta">
+        <a class="button primary" href="#comics">Read the comics</a>
+        <a class="button ghost-btn" href="#friends">Meet the friends</a>
+      </div>
+    </section>
+
+    <section id="friends">
+      <h2>The friends</h2>
+
+      <div class="friend-grid">
+        <article class="friend">
+          <img class="face" src="images/kuma.png"
+               alt="Portrait of Kuma, a soft round brown bear.">
+          <h3>Kuma</h3>
+          <p>The bear in charge. Mostly naps, occasionally leads.</p>
+        </article>
+
+        <article class="friend">
+          <img class="face" src="images/ressa.png"
+               alt="Portrait of Ressa, a small fluffy red panda with a white masked face and a ringed striped tail.">
+          <h3>Ressa</h3>
+          <p>Soft-spoken, startles easy, doubles in size when surprised. Secretly the strongest in the den. Will not be discussing it.</p>
+        </article>
+
+        <article class="friend">
+          <img class="face" src="images/usagi.png"
+               alt="Portrait of Usagi, a small Netherland Dwarf rabbit with short ears, a round face, and a calm, dignified expression.">
+          <h3>Usagi</h3>
+          <p>The composed one. Small, observant, and quietly certain he is the most sensible creature in the den. (He is not.)</p>
+        </article>
+
+        <article class="friend">
+          <img class="face" src="images/yuzu.png"
+               alt="Portrait of Yuzu, a round calm capybara with a tiny orange fruit resting on his head.">
+          <h3>Yuzu</h3>
+          <p>The zen one. Naps anywhere, judges nothing. Warm like a hot spring, in spirit and schedule.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="comics">
+      <h2>The comics</h2>
+
+      <!-- Strip #1 — live -->
+      <article class="strip">
+        <h3>Strip #1 · Monday, Again <span class="date">Oct 5</span></h3>
+
+        <div class="panel-grid">
+          <figure class="panel" data-label="panel 1 · art incoming">
+            <img src="comics/strip-01-panel-1.png" loading="lazy"
+                 alt="Kuma sleeps in a pile of golden leaves as one leaf drifts down and lands on his nose."
+                 onerror="this.style.display='none'">
+          </figure>
+
+          <figure class="panel" data-label="panel 2 · art incoming">
+            <img src="comics/strip-01-panel-2.png" loading="lazy"
+                 alt="Ressa tiptoes close and gently pokes Kuma's cheek with one paw while one sleepy eye cracks open."
+                 onerror="this.style.display='none'">
+          </figure>
+
+          <figure class="panel" data-label="panel 3 · art incoming">
+            <img src="comics/strip-01-panel-3.png" loading="lazy"
+                 alt="Kuma sits up with the leaf still stuck to his nose while Ressa, Usagi, and Yuzu watch."
+                 onerror="this.style.display='none'">
+          </figure>
+
+          <figure class="panel" data-label="panel 4 · art incoming">
+            <img src="comics/strip-01-panel-4.png" loading="lazy"
+                 alt="Everyone flops back down into one warm napping pile. Some Mondays deserve a second nap."
+                 onerror="this.style.display='none'">
+          </figure>
+        </div>
+
+        <p class="strip-note">New strips every Monday 🐾</p>
+      </article>
+
+      <!-- Prepared strips #2 and #3 remain unpublished for now. -->
+    </section>
+
+    <section id="about" class="about">
+      <h2>About the den</h2>
+      <p>
+        Kuma &amp; friends is drawn slowly and posted gently. Every strip is made
+        with warm tea, soft blankets, and a strict no-rush policy. If a comic
+        makes you exhale a little slower than before, the den has done its job.
+      </p>
+    </section>
+
+    <section id="newsletter" class="newsletter">
+      <h2>Join the den 📮</h2>
+      <p>One cozy email when a new strip drops. No noise, no schedules, ever.</p>
+      <!-- Replace # with your Buttondown signup URL when ready. -->
+      <a class="button" href="#">Get den mail</a>
+    </section>
+  </main>
+
+  <footer>
+    🐾 Kuma &amp; friends — handmade with warmth.
+    <span class="muted">
+      All leaves, no bugs. ·
+      <a href="#">Support the den</a>
     </span>
-
-    <h1>Kuma &amp; friends</h1>
-    <p>
-      Little stories, doodles, and adventures from a very soft bear
-      and his equally soft companions. The den is now open — pull up a leaf.
-    </p>
-    <div class="cta">
-      <a class="button primary" href="#comics">Read the comics</a>
-      <a class="button ghost-btn" href="#friends">Meet the friends</a>
-    </div>
-  </section>
-
-  <!-- ================= FRIENDS ================= -->
-  <section id="friends">
-    <h2>The friends</h2>
-    <div class="friend-grid">
-      <div class="friend">
-        <img class="face" src="images/kuma.png"
-         alt="Portrait of Kuma, a soft round brown bear.">
-        <h3>Kuma</h3>
-        <p>The bear in charge. Mostly naps, occasionally leads.</p>
-    </div>
-
-      <div class="friend">
-        <img class="face" src="images/ressa.png"
-         alt="Portrait of Ressa, a small fluffy red panda with a white masked face and a ringed striped tail.">
-        <h3>Ressa</h3>
-        <p>Soft-spoken, startles easy, doubles in size when surprised. Secretly the strongest in the den. Will not be discussing it.</p>
-      </div>
-      <div class="friend">
-        <img class="face" src="images/usagi.png"
-         alt="Portrait of Usagi, a small Netherland Dwarf rabbit with short ears, a round face, and a calm, dignified expression.">
-        <h3>Usagi</h3>
-        <p>The composed one. Small, observant, and quietly certain he is the most sensible creature in the den. (He is not.)</p>
-      </div>
-      <div class="friend">
-        <img class="face" src="images/yuzu.png"
-         alt="Portrait of Yuzu, a round calm capybara with a tiny orange fruit resting on his head.">
-        <h3>Yuzu</h3>
-        <p>The zen one. Naps anywhere, judges nothing. Warm like a hot spring, in spirit and schedule.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= COMICS =================
-       Weekly ritual: drop 4 PNGs into /comics, then copy one
-       <article class="strip"> block and paste it ABOVE this one
-       (newest strip on top). Nothing else to touch.
-  -->
-  <section id="comics">
-    <h2>The comics</h2>
-
-    <!-- ▼▼▼ Strip #1 — LIVE Monday Oct 5, 9:00 ▼▼▼ -->
-    <article class="strip">
-      <h3>Strip #1 · Monday, Again <span class="date">Oct 5</span></h3>
-      <div class="panel-grid">
-        <figure class="panel" data-label="panel 1 · art incoming">
-          <img src="comics/strip-01-panel-1.png" loading="lazy"
-               alt="Kuma the bear sleeps in a pile of golden leaves as one leaf drifts down and lands on his nose."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 2 · art incoming">
-          <img src="comics/strip-01-panel-2.png" loading="lazy"
-               alt="Ressa the red panda tiptoes close and gently pokes Kuma's cheek with one paw while one sleepy eye cracks open."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 3 · art incoming">
-          <img src="comics/strip-01-panel-3.png" loading="lazy"
-               alt="Kuma sits up with the leaf still stuck to his nose while Ressa, Usagi, and Yuzu watch, deeply unhelpful."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 4 · art incoming">
-          <img src="comics/strip-01-panel-4.png" loading="lazy"
-               alt="Everyone flops back down into one warm napping pile. Some Mondays deserve a second nap."
-               onerror="this.style.display='none'">
-        </figure>
-      </div>
-      <p class="strip-note">New strips every Monday 🐾</p>
-    </article>
-    <!-- ▲▲▲ Strip #1 ▲▲▲ -->
-
-    <!-- ▼▼▼ Strip #2 — UNCOMMENT Monday Oct 12 (delete this banner line and the matching one below) ▼▼▼
-    <article class="strip">
-      <h3>Strip #2 · The Snack Bowl Summit <span class="date">Oct 12</span></h3>
-      <div class="panel-grid">
-        <figure class="panel" data-label="panel 1 · art incoming">
-          <img src="comics/strip-02-panel-1.png" loading="lazy"
-               alt="An empty snack bowl sits in the middle of the den while all four friends stare at it in silence."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 2 · art incoming">
-          <img src="comics/strip-02-panel-2.png" loading="lazy"
-               alt="Usagi points an accusing paw at Yuzu, who remains perfectly serene with his eyes closed, unbothered by physics or blame."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 3 · art incoming">
-          <img src="comics/strip-02-panel-3.png" loading="lazy"
-               alt="Ressa tiptoes in through the door holding a single tiny acorn like a trophy."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 4 · art incoming">
-          <img src="comics/strip-02-panel-4.png" loading="lazy"
-               alt="All four friends share the one acorn in tiny equal bites, perfectly content."
-               onerror="this.style.display='none'">
-        </figure>
-      </div>
-      <p class="strip-note">New strips every Monday 🐾</p>
-    </article>
-    ▲▲▲ Strip #2 ▲▲▲ -->
-
-    <!-- ▼▼▼ Strip #3 — UNCOMMENT Monday Oct 19 ▼▼▼
-    <article class="strip">
-      <h3>Strip #3 · Yuzu's Bath <span class="date">Oct 19</span></h3>
-      <div class="panel-grid">
-        <figure class="panel" data-label="panel 1 · art incoming">
-          <img src="comics/strip-03-panel-1.png" loading="lazy"
-               alt="Yuzu the capybara lowers himself slowly into a deep pile of warm autumn leaves with a long, satisfied sigh."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 2 · art incoming">
-          <img src="comics/strip-03-panel-2.png" loading="lazy"
-               alt="Usagi cannonballs into the leaf pile from above, sending leaves flying in every direction."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 3 · art incoming">
-          <img src="comics/strip-03-panel-3.png" loading="lazy"
-               alt="Ressa the red panda edges in shyly from the side, then instantly melts into the warm leaves, fluffed to maximum coziness."
-               onerror="this.style.display='none'">
-        </figure>
-        <figure class="panel" data-label="panel 4 · art incoming">
-          <img src="comics/strip-03-panel-4.png" loading="lazy"
-               alt="All four friends soak peacefully in the leaf bath like a pot of tea, with cozy steam drifting up from the pile."
-               onerror="this.style.display='none'">
-        </figure>
-      </div>
-      <p class="strip-note">New strips every Monday 🐾</p>
-    </article>
-    ▲▲▲ Strip #3 ▲▲▲ -->
-  </section>
-
-  <!-- ================= ABOUT ================= -->
-  <section id="about" class="about">
-    <h2>About the den</h2>
-    <p>
-      Kuma &amp; friends is drawn slowly and posted gently. Every strip is made
-      with warm tea, soft blankets, and a strict no-rush policy. If a comic
-      makes you exhale a little slower than before, the den has done its job.
-    </p>
-  </section>
-
-  <!-- ================= NEWSLETTER =================
-       TODO-2: Paste your Buttondown signup URL into the link below
-       (both the comment and the href="#").
-  -->
-  <section id="newsletter" class="newsletter">
-    <h2>Join the den 📮</h2>
-    <p>One cozy email when a new strip drops. No noise, no schedules, ever.</p>
-    <a class="button" href="#">Get den mail</a>
-  </section>
-
-  <!-- ================================================================
-       THE DEN SHOP — dormant. Flip on in two stages:
-
-       STAGE A (~Oct 19, once 3 strips are live):
-         1. Remove this banner comment AND the closing one at the
-            bottom of the section.
-         2. Uncomment the nav link ("The den shop") up in <header>.
-         3. TODO-4: paste your Ko-fi SHOP link into the Desktop Pack
-            and Tip-the-den buttons.
-         (Delete or comment out the Cozy Club card for now — see Stage B.)
-
-       STAGE B (~Nov, once the newsletter has ~50+ signups):
-         1. Uncomment the Cozy Club card.
-         2. TODO-5: paste your Ko-fi MEMBERSHIPS link into its button.
-         3. Announce to the newsletter first, socials second.
-       ================================================================
-  <section id="den-shop" class="den-shop">
-    <h2>The den shop 🍯</h2>
-    <p class="shop-lede">Take a little piece of the den home with you.</p>
-
-    <div class="shop-grid">
-
-      <div class="shop-card">
-        <span class="shop-icon">🖥️</span>
-        <h3>Cozy Desktop Pack</h3>
-        <p>
-          Five hand-drawn wallpapers — Kuma &amp; the gang in autumn
-          leaves, first snow, and naptime. For desktop &amp; phone.
-        </p>
-        <p class="price">Pay what you feel · suggested $4</p>
-        <a class="button" href="#">Get the pack</a>
-      </div>
-
-      <div class="shop-card">
-        <span class="shop-icon">🧸</span>
-        <h3>Cozy Club</h3>
-        <p>
-          See each strip a week early, get monthly wallpaper drops,
-          and your name on the den wall. Cancel anytime, zero guilt.
-        </p>
-        <p class="price">$3 / month</p>
-        <a class="button" href="#">Join the club</a>
-      </div>
-
-      <div class="shop-card">
-        <span class="shop-icon">🍵</span>
-        <h3>Tip the den</h3>
-        <p>
-          Just here for the free comics? That's genuinely lovely.
-          If you're feeling warm, a tea helps keep the den going.
-        </p>
-        <p class="price">Any amount</p>
-        <a class="button ghost-btn" href="#">Buy Kuma a tea</a>
-      </div>
-
-    </div>
-  </section>
-  ================================================================ -->
-
-</main>
-
-<!-- ================= FOOTER =================
-     TODO-3: Paste your Ko-fi URL into the support link below.
-     This one stays live from day one — quiet, no fanfare.
--->
-<footer>
-  🐾 Kuma &amp; friends — handmade with warmth.
-  <span class="muted">
-    All leaves, no bugs. ·
-    <a href="#">Support the den</a>
-  </span>
-</footer>
-
+  </footer>
 </body>
 </html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
