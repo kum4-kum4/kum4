@@ -426,6 +426,7 @@
     @media (max-width: 600px) {
       header {
         padding: 1rem;
+        position: sticky;
       }
 
       .menu-toggle {
@@ -433,22 +434,48 @@
       }
 
       #site-nav {
-        display: none;
-        flex-basis: 100%;
+        position: absolute;
+        top: calc(100% + .5rem);
+        right: 1rem;
+        left: 1rem;
+        z-index: 20;
+
+        display: flex;
         flex-direction: column;
-        align-items: stretch;
-        gap: .15rem;
-        padding: .4rem 0 .2rem;
+        gap: .25rem;
+        padding: .65rem;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(91, 70, 54, .12);
+
+        /* Closed state */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition:
+          opacity .22s ease,
+          transform .22s ease,
+          visibility .22s ease;
       }
 
       #site-nav.is-open {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
       }
 
       #site-nav a {
         display: block;
         margin: 0;
-        padding: .55rem .25rem;
+        padding: .65rem .75rem;
+        border-radius: 10px;
+      }
+
+      #site-nav a:hover {
+        background: var(--card);
       }
 
       .hero .pals {
@@ -463,6 +490,12 @@
 
       .panel-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #site-nav {
+        transition: none;
       }
     }
   </style>
@@ -619,39 +652,6 @@
   </footer>
 
   <script>
-    const menuButton = document.querySelector(".menu-toggle");
-    const siteNav = document.querySelector("#site-nav");
-
-    function closeMenu() {
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Open menu");
-      siteNav.classList.remove("is-open");
-    }
-
-    menuButton.addEventListener("click", () => {
-      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-
-      if (isOpen) {
-        closeMenu();
-      } else {
-        menuButton.setAttribute("aria-expanded", "true");
-        menuButton.setAttribute("aria-label", "Close menu");
-        siteNav.classList.add("is-open");
-      }
-    });
-
-    siteNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 600) {
-        closeMenu();
-      }
-    });
-  </script>
-
-<script>
   const menuButton = document.querySelector(".menu-toggle");
   const siteNav = document.querySelector("#site-nav");
 
@@ -693,5 +693,6 @@
   });
 </script>
   
+   
 </body>
 </html>
