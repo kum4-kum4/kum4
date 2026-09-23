@@ -57,10 +57,30 @@
       border-bottom: 1px solid var(--line);
       position: sticky; top: 0; z-index: 10;
     }
-    .logo { font-weight: bold; font-size: 1.1rem; color: var(--soft); text-decoration: none; }
-    nav a { color: var(--soft); text-decoration: none; margin-left: 1.25rem; font-size: .95rem; }
-    nav a:hover { color: var(--accent); }
 
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--soft);
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 1.55rem;
+      height: 1.55rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50% 50% 50% 10%;
+      font-size: .85rem;
+      line-height: 1;
+      transform: rotate(-20deg);
+    }
+    
     /* ---------- hero ---------- */
     .hero { text-align: center; padding: 4.5rem 1.5rem 3.5rem; }
     .hero .pals { font-size: 2.4rem; letter-spacing: .35em; margin-bottom: 1.25rem; }
