@@ -1,19 +1,4 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-							<style>
-								body {
-									background-color: white; /* Ensure the iframe has a white background */
-								}
-
-								
-							</style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -124,19 +109,22 @@
 
     .menu-toggle {
       display: none;
-      align-items: center;
-      gap: .45rem;
-      padding: .45rem .8rem;
+      place-items: center;
+      width: 2.6rem;
+      height: 2.6rem;
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: 50%;
       background: var(--card);
-      color: var(--soft);
-      font: inherit;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      line-height: 1;
       cursor: pointer;
     }
 
     .menu-toggle:hover {
       background: var(--cream);
+      transform: rotate(-8deg);
     }
 
     .menu-toggle:focus-visible,
@@ -434,14 +422,14 @@
       margin-top: .4rem;
     }
 
-    /* ---------- mobile menu and layout ---------- */
+    /* ---------- mobile ---------- */
     @media (max-width: 600px) {
       header {
         padding: 1rem;
       }
 
       .menu-toggle {
-        display: inline-flex;
+        display: inline-grid;
       }
 
       #site-nav {
@@ -493,8 +481,7 @@
       aria-expanded="false"
       aria-controls="site-nav"
       aria-label="Open menu">
-      <span class="menu-icon" aria-hidden="true">☰</span>
-      <span class="menu-label">Menu</span>
+      <span aria-hidden="true">✿</span>
     </button>
 
     <nav id="site-nav" aria-label="Main navigation">
@@ -638,8 +625,6 @@
     function closeMenu() {
       menuButton.setAttribute("aria-expanded", "false");
       menuButton.setAttribute("aria-label", "Open menu");
-      menuButton.querySelector(".menu-label").textContent = "Menu";
-      menuButton.querySelector(".menu-icon").textContent = "☰";
       siteNav.classList.remove("is-open");
     }
 
@@ -651,8 +636,6 @@
       } else {
         menuButton.setAttribute("aria-expanded", "true");
         menuButton.setAttribute("aria-label", "Close menu");
-        menuButton.querySelector(".menu-label").textContent = "Close";
-        menuButton.querySelector(".menu-icon").textContent = "×";
         siteNav.classList.add("is-open");
       }
     });
@@ -669,10 +652,3 @@
   </script>
 </body>
 </html>
-
-							<script>
-                            	
-							</script>
-                        </body>
-                        </html>
-                    
