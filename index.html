@@ -48,9 +48,18 @@
 
     /* ---------- shared buttons ---------- */
     .button {
-      display: inline-block; padding: .65rem 1.7rem; border-radius: 999px;
-      background: var(--accent); color: #fff; text-decoration: none; font-size: .95rem;
+      display: inline-block;
+      padding: .7rem 1.7rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: .9rem;
+      font-weight: bold;
+      letter-spacing: .01em;
     }
+    
     .button:hover { filter: brightness(.95); }
     .button.ghost-btn { background: transparent; color: var(--soft); border: 1px solid var(--line); }
     .button.ghost-btn:hover { background: var(--card); }
@@ -124,13 +133,13 @@
     }
 
     @media (max-width: 600px) {
-      .hero .pals {
-        gap: .4rem;
-      }
+      header {
+        padding: 1rem;
+    }
 
-      .hero .pals img {
-        width: 62px;
-        height: 62px;
+      nav a {
+        margin-left: .65rem;
+        font-size: .82rem;
       }
     }
     
