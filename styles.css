@@ -225,7 +225,7 @@ section h2 {
 /* ---------- friends ---------- */
 .friend-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
 }
 
@@ -497,6 +497,11 @@ footer .muted {
   .panel-grid {
     grid-template-columns: 1fr;
   }
+
+  .friend-grid {
+    grid-template-columns: 1fr;
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
