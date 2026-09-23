@@ -116,6 +116,17 @@
     .hero .pals img:nth-child(4) {
       transform: translateY(-8px);
     }
+
+    @media (max-width: 600px) {
+      .hero .pals {
+        gap: .4rem;
+      }
+
+    .hero .pals img {
+        width: 62px;
+        height: 62px;
+      }
+    }
     
     .hero h1 { font-size: 2.4rem; color: var(--soft); margin-bottom: .75rem; }
     .badge {
@@ -238,7 +249,15 @@
       <img src="images/usagi.png" alt="Usagi, a small Netherland Dwarf rabbit.">
       <img src="images/yuzu.png" alt="Yuzu, a calm capybara.">
     </div>
-    <span class="badge">🐾 New strips every Monday</span>
+    <span class="badge">
+      <span aria-hidden="true">✦</span>
+      New strips every Monday
+    </span>
+
+    .badge > span {
+      color: var(--accent);
+      margin-right: .25rem;
+      }
     <h1>Kuma &amp; friends</h1>
     <p>
       Little stories, doodles, and adventures from a very soft bear
