@@ -66,7 +66,7 @@
       font-family: Georgia, "Times New Roman", serif;
     }
 
-    /* ---------- header / nav ---------- */
+    /* ---------- header / navigation ---------- */
     header {
       display: flex;
       flex-wrap: wrap;
@@ -104,7 +104,12 @@
       transform: rotate(-20deg);
     }
 
-    nav a {
+    #site-nav {
+      display: flex;
+      align-items: center;
+    }
+
+    #site-nav a {
       color: var(--soft);
       text-decoration: none;
       margin-left: 1.25rem;
@@ -113,8 +118,31 @@
       letter-spacing: .02em;
     }
 
-    nav a:hover {
+    #site-nav a:hover {
       color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      gap: .45rem;
+      padding: .45rem .8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--soft);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .menu-toggle:hover {
+      background: var(--cream);
+    }
+
+    .menu-toggle:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
     }
 
     /* ---------- buttons ---------- */
@@ -206,7 +234,7 @@
       margin: 0 .4rem;
     }
 
-    /* ---------- generic sections ---------- */
+    /* ---------- page sections ---------- */
     section {
       padding: 3.5rem 1.5rem;
       max-width: 56rem;
@@ -291,7 +319,6 @@
       min-height: 200px;
     }
 
-    /* Placeholder label shown if comic art has not loaded */
     .panel::after {
       content: attr(data-label);
       position: absolute;
@@ -407,15 +434,33 @@
       margin-top: .4rem;
     }
 
-    /* ---------- mobile ---------- */
+    /* ---------- mobile menu and layout ---------- */
     @media (max-width: 600px) {
       header {
         padding: 1rem;
       }
 
-      nav a {
-        margin-left: .65rem;
-        font-size: .82rem;
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      #site-nav {
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .15rem;
+        padding: .4rem 0 .2rem;
+      }
+
+      #site-nav.is-open {
+        display: flex;
+      }
+
+      #site-nav a {
+        display: block;
+        margin: 0;
+        padding: .55rem .25rem;
       }
 
       .hero .pals {
@@ -442,7 +487,17 @@
       <span>Kuma &amp; friends</span>
     </a>
 
-    <nav aria-label="Main navigation">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label="Open menu">
+      <span class="menu-icon" aria-hidden="true">☰</span>
+      <span class="menu-label">Menu</span>
+    </button>
+
+    <nav id="site-nav" aria-label="Main navigation">
       <a href="#friends">The friends</a>
       <a href="#comics">The comics</a>
       <a href="#about">About the clubhouse</a>
@@ -516,7 +571,6 @@
     <section id="comics">
       <h2>The comics</h2>
 
-      <!-- Strip #1 — live -->
       <article class="strip">
         <h3>Strip #1 · Monday, Again <span class="date">Oct 5</span></h3>
 
@@ -576,6 +630,43 @@
       <a href="#">Support the clubhouse</a>
     </span>
   </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const siteNav = document.querySelector("#site-nav");
+
+    function closeMenu() {
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open menu");
+      menuButton.querySelector(".menu-label").textContent = "Menu";
+      menuButton.querySelector(".menu-icon").textContent = "☰";
+      siteNav.classList.remove("is-open");
+    }
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+
+      if (isOpen) {
+        closeMenu();
+      } else {
+        menuButton.setAttribute("aria-expanded", "true");
+        menuButton.setAttribute("aria-label", "Close menu");
+        menuButton.querySelector(".menu-label").textContent = "Close";
+        menuButton.querySelector(".menu-icon").textContent = "×";
+        siteNav.classList.add("is-open");
+      }
+    });
+
+    siteNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 600) {
+        closeMenu();
+      }
+    });
+  </script>
 </body>
 </html>
 
